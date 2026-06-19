@@ -1,28 +1,28 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Navbar } from "@/components/navbar";
-import { Hero } from "@/components/hero";
-import { Categories } from "@/components/categories";
-import { ProductGrid } from "@/components/product-grid";
-import { products as allProducts, type Product } from "@/lib/products";
+import { useState } from "react"
+import { Navbar } from "@/components/navbar"
+import { Hero } from "@/components/hero"
+import { Categories } from "@/components/categories"
+import { ProductGrid } from "@/components/product-grid"
+import { products as allProducts, type Product } from "@/lib/products"
 import {
   FilterSidebar,
   initialFilterSelections,
   type FilterState,
-} from "@/components/filter-sidebar";
-import { CheckoutPanel, type CartItem } from "@/components/checkout-panel";
-import { Footer } from "@/components/footer";
+} from "@/components/filter-sidebar"
+import { CheckoutPanel, type CartItem } from "@/components/checkout-panel"
+import { Footer } from "@/components/footer"
 
 export default function Page() {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([])
   const [filters, setFilters] = useState<FilterState>({
     selectedFilters: initialFilterSelections,
     maxPrice: 2500,
-  });
+  })
 
   const filteredProducts = allProducts.filter((product) => {
-    const priceMatch = product.price <= filters.maxPrice;
+    const priceMatch = product.price <= filters.maxPrice
     const selectionMatch = Object.values(filters.selectedFilters).every(
       (selectedItems) =>
         selectedItems.length === 0 ||
@@ -32,33 +32,33 @@ export default function Page() {
             product.category === item ||
             product.name.includes(item),
         ),
-    );
+    )
 
-    return priceMatch && selectionMatch;
-  });
+    return priceMatch && selectionMatch
+  })
 
   const resetFilters = () => {
     setFilters({
       selectedFilters: initialFilterSelections,
       maxPrice: 2500,
-    });
-  };
+    })
+  }
 
   const addToCart = (p: Product) => {
     setCart((prev) => {
-      const existing = prev.find((i) => i.id === p.id);
+      const existing = prev.find((i) => i.id === p.id)
       if (existing) {
-        return prev.map((i) => (i.id === p.id ? { ...i, qty: i.qty + 1 } : i));
+        return prev.map((i) => (i.id === p.id ? { ...i, qty: i.qty + 1 } : i))
       }
-      return [...prev, { ...p, qty: 1 }];
-    });
-  };
+      return [...prev, { ...p, qty: 1 }]
+    })
+  }
 
   const removeFromCart = (id: string) => {
-    setCart((prev) => prev.filter((i) => i.id !== id));
-  };
+    setCart((prev) => prev.filter((i) => i.id !== id))
+  }
 
-  const cartCount = cart.reduce((sum, i) => sum + i.qty, 0);
+  const cartCount = cart.reduce((sum, i) => sum + i.qty, 0)
 
   return (
     <div className="min-h-screen bg-background">
@@ -87,5 +87,5 @@ export default function Page() {
       </main>
       <Footer />
     </div>
-  );
+  )
 }
