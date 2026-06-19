@@ -29,7 +29,8 @@ export function ProductGrid({
       </div>
       {products.length === 0 ? (
         <div className="rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
-          No products match your current filters. Try lowering the max price or clearing selections.
+          No products match your current filters. Try lowering the max price or
+          clearing selections.
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
@@ -42,7 +43,11 @@ export function ProductGrid({
               <div className="relative aspect-square overflow-hidden bg-secondary/40">
                 <img
                   src={
-                    p.img ? (p.img.startsWith("/") ? p.img : `/${p.img}`) : "/placeholder.svg"
+                    p.img
+                      ? p.img.startsWith("/")
+                        ? p.img
+                        : `/${p.img}`
+                      : "/placeholder.svg"
                   }
                   alt={p.name}
                   className="size-full object-cover transition-transform duration-500 group-hover:scale-105"

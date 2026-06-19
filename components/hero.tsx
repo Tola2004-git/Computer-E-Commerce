@@ -13,7 +13,10 @@ export function Hero() {
         aria-hidden="true"
       />
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:py-24 lg:px-8">
-        <div className="relative z-10 animate-fade-up" style={{ animationDelay: "80ms" }}>
+        <div
+          className="relative z-10 animate-fade-up"
+          style={{ animationDelay: "80ms" }}
+        >
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             <Zap className="size-3.5" />
             Next-Gen Hardware In Stock
@@ -30,11 +33,7 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Button size="lg" className="h-11 gap-2 px-6 glow-border">
               <Cpu className="size-4" />
-              Build Your PC
-            </Button>
-            <Button variant="outline" size="lg" className="h-11 gap-2 px-6">
-              Shop Laptops
-              <ArrowRight className="size-4" />
+              Shop Now
             </Button>
           </div>
           <dl className="mt-10 flex gap-8">
@@ -53,8 +52,14 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className="relative z-10 animate-fade-up" style={{ animationDelay: "160ms" }}>
-          <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card glow-border animate-pop" style={{ animationDelay: "200ms" }}>
+        <div
+          className="relative z-10 animate-fade-up"
+          style={{ animationDelay: "160ms" }}
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card glow-border animate-pop"
+            style={{ animationDelay: "200ms" }}
+          >
             <img
               src="/hero-pc.png"
               alt="Custom gaming PC case with electric blue RGB lighting"
@@ -65,7 +70,7 @@ export function Hero() {
                 FLAGSHIP BUILD
               </p>
               <p className="font-mono text-sm font-bold text-primary">
-                TECHNEST APEX X9
+                Computer Shop APEX X9
               </p>
             </div>
           </div>

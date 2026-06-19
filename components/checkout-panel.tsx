@@ -34,7 +34,11 @@ export function CheckoutPanel({
               <div className="size-12 shrink-0 overflow-hidden rounded-lg border border-border bg-secondary/40">
                 <img
                   src={
-                    item.img ? (item.img.startsWith("/") ? item.img : `/${item.img}`) : "/placeholder.svg"
+                    item.img
+                      ? item.img.startsWith("/")
+                        ? item.img
+                        : `/${item.img}`
+                      : "/placeholder.svg"
                   }
                   alt={item.name}
                   className="size-full object-cover"

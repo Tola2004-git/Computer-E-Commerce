@@ -51,7 +51,13 @@ export function Categories() {
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
-                src={cat.img ? (cat.img.startsWith("/") ? cat.img : `/${cat.img}`) : "/placeholder.svg"}
+                src={
+                  cat.img
+                    ? cat.img.startsWith("/")
+                      ? cat.img
+                      : `/${cat.img}`
+                    : "/placeholder.svg"
+                }
                 alt={cat.title}
                 className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

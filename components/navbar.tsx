@@ -16,7 +16,7 @@ export function Navbar({ cartCount }: { cartCount: number }) {
             <Cpu className="size-5" />
           </span>
           <span className="font-mono text-lg font-bold tracking-widest text-primary glow-text">
-            TECHNEST
+            Computer Shop
           </span>
         </a>
 

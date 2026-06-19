@@ -1,0 +1,17 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "at-rule-no-unknown": [
+      "error",
+      {
+        "ignoreAtRules": [
+          "apply",
+          "custom-variant",
+          "layer",
+          "tailwind",
+          "theme"
+        ]
+      }
+    ]
+  }
+}

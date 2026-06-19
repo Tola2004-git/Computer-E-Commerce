@@ -45,7 +45,7 @@ export default async function CategoryPage({
 
   const categoryProductIds = categoryProducts[slug] || [];
   const filteredProducts = products.filter((p) =>
-    categoryProductIds.includes(p.id)
+    categoryProductIds.includes(p.id),
   );
 
   return (

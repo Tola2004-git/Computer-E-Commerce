@@ -23,7 +23,7 @@ export function Footer() {
                 <Cpu className="size-5" />
               </span>
               <span className="font-mono text-lg font-bold tracking-widest text-primary glow-text">
-                TECHNEST
+                Computer Shop
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -52,8 +52,7 @@ export function Footer() {
           ))}
         </div>
         <div className="mt-10 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} TECHNEST Systems. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} Computer Shop. All rights reserved.
         </div>
       </div>
     </footer>
