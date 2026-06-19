@@ -1,14 +1,11 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
 
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
   ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center bg-slate-900">
-      <span className="text-white">Loading 3D Scene...</span>
-    </div>
-  ),
+  loading: () => <div className="w-full h-full" />,
 })
 
 interface SplineSceneProps {
@@ -17,6 +14,10 @@ interface SplineSceneProps {
 }
 
 export function SplineScene({ scene, className }: SplineSceneProps) {
+  useEffect(() => {
+    import('@splinetool/react-spline').catch(() => {})
+  }, [])
+
   return (
     <div className={`w-full h-full ${className ?? ''}`}>
       <Spline scene={scene} />
