@@ -3,10 +3,10 @@ import { ArrowUpRight } from "lucide-react";
 
 const categories = [
   {
-    title: "CUSTOM DESKTOPS",
-    desc: "Hand-built towers",
+    title: "DESKTOPS",
+    desc: "Ready-to-use desktops",
     img: "/cat-desktop.png",
-    slug: "custom-desktops",
+    slug: "desktops",
   },
   {
     title: "GAMING LAPTOPS",

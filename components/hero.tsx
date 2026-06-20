@@ -4,7 +4,7 @@ import { SplineScene } from "@/components/ui/splite";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border/60 grid-bg">
+    <section className="relative overflow-hidden border-b border-border/60 grid-bg px-4 py-16 sm:px-6 lg:px-8">
       <div
         className="pointer-events-none absolute -right-40 top-0 size-[500px] rounded-full opacity-30 blur-[120px]"
         style={{
@@ -14,7 +14,7 @@ export function Hero() {
         aria-hidden="true"
       />
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 gap-10 items-center lg:grid-cols-2">
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
               <Zap className="size-3.5" />

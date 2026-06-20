@@ -1,14 +1,12 @@
 import { notFound } from "next/navigation";
 import { products } from "@/lib/products";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { CategoryProductGrid } from "@/components/category-product-grid";
 
 const categoryMapping: Record<string, { title: string; description: string }> =
   {
-    "custom-desktops": {
-      title: "CUSTOM DESKTOPS",
-      description: "Hand-built towers tailored to your performance needs",
+    desktops: {
+      title: "DESKTOPS",
+      description: "Ready-to-use desktops",
     },
     "gaming-laptops": {
       title: "GAMING LAPTOPS",
@@ -25,10 +23,16 @@ const categoryMapping: Record<string, { title: string; description: string }> =
   };
 
 const categoryProducts: Record<string, string[]> = {
-  "custom-desktops": ["apex-x9"],
-  "gaming-laptops": ["blade-16"],
-  "mechanical-keyboards": ["vortex-tkl"],
-  "monitors-audio": ["flux-pro"],
+  desktops: ["desktop-1", "desktop-2", "desktop-3", "desktop-4", "desktop-5"],
+  "gaming-laptops": ["laptop-1", "laptop-2", "laptop-3", "laptop-4"],
+  "mechanical-keyboards": [
+    "keyboard-1",
+    "keyboard-2",
+    "keyboard-3",
+    "keyboard-4",
+    "keyboard-5",
+  ],
+  "monitors-audio": ["mouse-1", "mouse-2", "mouse-3", "mouse-5"],
 };
 
 export default async function CategoryPage({
@@ -44,9 +48,17 @@ export default async function CategoryPage({
   }
 
   const categoryProductIds = categoryProducts[slug] || [];
-  const filteredProducts = products.filter((p) =>
-    categoryProductIds.includes(p.id),
-  );
+  const normalize = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]/g, "")
+      .replace(/s$/, "");
+
+  const filteredProducts = products.filter((p) => {
+    if (categoryProductIds.length > 0) return categoryProductIds.includes(p.id);
+    return normalize(p.category) === normalize(category.title);
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -68,55 +80,8 @@ export default async function CategoryPage({
       {/* Products Grid */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {filteredProducts.map((product) => (
-              <div
-                key={product.id}
-                className="glow-hover group flex flex-col overflow-hidden rounded-xl border border-border bg-card"
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={
-                      product.img
-                        ? product.img.startsWith("/")
-                          ? product.img
-                          : `/${product.img}`
-                        : "/placeholder.svg"
-                    }
-                    alt={product.name}
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-4">
-                  <h3 className="font-mono font-bold tracking-wide">
-                    {product.name}
-                  </h3>
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {product.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="mt-auto flex items-end justify-between pt-4">
-                    <div>
-                      <p className="text-xs text-muted-foreground">Price</p>
-                      <p className="font-mono text-lg font-bold">
-                        ${product.price.toLocaleString()}
-                      </p>
-                    </div>
-                    <Button
-                      size="icon"
-                      className="rounded-lg bg-secondary text-muted-foreground hover:bg-primary hover:text-primary-foreground"
-                    >
-                      <Plus className="size-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
+        <CategoryProductGrid products={filteredProducts} />
+      ) : (
           <div className="py-12 text-center">
             <p className="text-muted-foreground">
               No products available in this category yet.
